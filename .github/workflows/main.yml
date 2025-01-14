@@ -40,12 +40,12 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" > deploy_key.pem
           chmod 600 deploy_key.pem
 
-      # Deploy to EC2
-      - name: Deploy application to EC2
-        run: |
-          ssh -i deploy_key.pem -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_PUBLIC_IP }} << 'EOF'
-          # Pull the latest image
-          docker pull setu0123/drf_cicd_pipeline:latest
+      # # Deploy to EC2
+      # - name: Deploy application to EC2
+      #   run: |
+      #     ssh -i deploy_key.pem -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_PUBLIC_IP }} << 'EOF'
+      #     # Pull the latest image
+      #     docker pull setu0123/drf_cicd_pipeline:latest
           
-          docker-compose -f /home/ubuntu/drf_cicd_pipeline/docker-compose.yml down || true
-          docker-compose -f /home/ubuntu/drf_cicd_pipeline/docker-compose.yml up -d --build
+      #     docker-compose -f /home/ubuntu/drf_cicd_pipeline/docker-compose.yml down || true
+      #     docker-compose -f /home/ubuntu/drf_cicd_pipeline/docker-compose.yml up -d --build
