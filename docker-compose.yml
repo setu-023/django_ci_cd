@@ -3,3 +3,8 @@ services:
     build: .
     ports:
       - "8000:8000"
+  
+  server:
+    build: nginx 
+    ports:
+      - "80:8000"
